@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Statistics";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Total number of votes : @ViewBag.totalVotes</h1>
+
+    <table>
+        <tr>
+            <th scope="col">Cats</th>
+            <th scope="col">Votes</th>
+            <th scope="col">Cuteness level</th>
+        </tr>
+        @foreach (var i in ViewBag.cats)
+        {
+            <tr>
+                <td style="margin: 10px; padding: 5px;">  <img src=@i.url style="height: 100px;width: 100px" /> </td>
+                <td style="margin: 10px; padding: 5px;">  @i.votes </td>
+                <td style="margin: 10px; padding: 5px;">  @i.cuteness % </td>
+            </tr>
+        }
+    </table>
+
+
+    </div>
+

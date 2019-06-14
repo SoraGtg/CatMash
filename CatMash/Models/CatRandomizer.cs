@@ -15,12 +15,12 @@ namespace CatMash.Models
         public int firstIndex { get; set; }
         public int secondIndex { get; set; }
 
-        public void ChooseCandidates(Cats cats)
+        public void ChooseCandidates()
         {
-            this.firstIndex = rng.Next()%(cats.cats.Count);
+            this.firstIndex = rng.Next()%(Cats.cats.Count);
             do
             {
-                this.secondIndex = rng.Next() % (cats.cats.Count);
+                this.secondIndex = rng.Next() % (Cats.cats.Count);
             } while (this.secondIndex == this.firstIndex);
         }
     }

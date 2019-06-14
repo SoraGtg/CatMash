@@ -11,9 +11,10 @@ namespace CatMash.Models
      * Reads the JSON from L'Atelier's database and stores the urls and ids of the cats
      * Author : Mokrane Gaci
      */
-    public class Cats
+    public static class Cats
     {
-        public List<Cat> cats { get; set; }
+        public static List<Cat> cats { get; set; }
+        public static bool ready { get; set; } = false;
 
         // This class is only here for the JSON parser to download the JSON file, it shouldn't be used in any other Class
         private class Images
@@ -21,17 +22,18 @@ namespace CatMash.Models
             public List<Cat> images { get; set; }
         }
 
-        public void GatherCats()
+        public static void GatherCats()
         {
             var json = new WebClient().DownloadString("https://latelier.co/data/cats.json");// {'images':{cats}}
             Images catList = new Images();
             catList = JsonConvert.DeserializeObject<Images>(json);
-            this.cats = catList.images;
+            Cats.cats = catList.images;
+            Cats.ready = true;
         }
 
-        public void addVote(int catIndex)
+        public static void addVote(int catIndex)
         {
-            this.cats[catIndex].votes++;
+            Cats.cats[catIndex].votes++;
             SharedVariables.totalVotes++;
         }
     }

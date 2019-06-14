@@ -10,41 +10,39 @@ namespace CatMash.Controllers
 {
     public class HomeController : Controller
     {
-        private Cats cats;
 
         public HomeController()
         {
-            this.cats = new Cats();
-            cats.GatherCats();
-            ViewBag.totalVotes = SharedVariables.totalVotes;
+            if(Cats.ready == false)
+                Cats.GatherCats();
         }
 
         public IActionResult Index()
         {
             CatRandomizer randy = new CatRandomizer();
-            randy.ChooseCandidates(this.cats);
-            ViewBag.first = this.cats.cats[randy.firstIndex].url;
+            randy.ChooseCandidates();
+            ViewBag.first = Cats.cats[randy.firstIndex].url;
             ViewBag.firstIndex = randy.firstIndex;
-            ViewBag.sec = this.cats.cats[randy.secondIndex].url;
+            ViewBag.sec = Cats.cats[randy.secondIndex].url;
             ViewBag.secondIndex = randy.secondIndex;
             return View();
         }
 
-        public IActionResult Privacy(int catIndex)
+        public IActionResult Privacy()
         {
             return View();
         }
 
         public IActionResult Voted(int catIndex)
         {
-            this.cats.addVote(catIndex);
+            Cats.addVote(catIndex);
 
             CatRandomizer randy = new CatRandomizer();
-            randy.ChooseCandidates(this.cats);
-            ViewBag.first = this.cats.cats[randy.firstIndex].url;
-            ViewBag.sec = this.cats.cats[randy.secondIndex].url;
-
-            ViewBag.totalVotes = SharedVariables.totalVotes;
+            randy.ChooseCandidates();
+            ViewBag.first = Cats.cats[randy.firstIndex].url;
+            ViewBag.sec = Cats.cats[randy.secondIndex].url;
+            ViewBag.firstIndex = randy.firstIndex;
+            ViewBag.secondIndex = randy.secondIndex;
 
             return View("Index");
         }
