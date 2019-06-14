@@ -28,5 +28,11 @@ namespace CatMash.Models
             catList = JsonConvert.DeserializeObject<Images>(json);
             this.cats = catList.images;
         }
+
+        public void addVote(int catIndex)
+        {
+            this.cats[catIndex].votes++;
+            SharedVariables.totalVotes++;
+        }
     }
 }

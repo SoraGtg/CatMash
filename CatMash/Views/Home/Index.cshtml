@@ -5,12 +5,18 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Total votes : @ViewBag.totalVotes</p>
+
     <div class="row">
-        <div class="column">
-            <img src=@ViewBag.first alt="Vote furr me !" style="width:100%" />
-        </div>
-        <div class="column">
-            <img src=@ViewBag.sec alt="Na ! For me :(" style="width:100%" />
+        <div class="large-6 column">
+            <a href="@Url.Action( "Voted", "Home", new { catIndex = ViewBag.firstIndex } )">
+                <img src=@ViewBag.first alt="Vote furr me !" style="height: 500px;width: 500px" />
+            </a>
+</div>
+        <div class="large-6 column">
+            <a href="@Url.Action( "Voted", "Home", new { catIndex = ViewBag.secondIndex }  )" >
+                <img src=@ViewBag.sec alt="Na ! Furr me :(" style="height:500px; width:500px" />
+            </a>
         </div>
     </div>
 
