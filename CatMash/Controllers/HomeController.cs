@@ -12,6 +12,9 @@ namespace CatMash.Controllers
     {
         public IActionResult Index()
         {
+            Cats cats = new Cats();
+            cats.GatherCats();
+            ViewBag.Json = cats.cats[0].url;
             return View();
         }
 
