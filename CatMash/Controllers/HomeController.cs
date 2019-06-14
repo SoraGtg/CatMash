@@ -14,7 +14,10 @@ namespace CatMash.Controllers
         {
             Cats cats = new Cats();
             cats.GatherCats();
-            ViewBag.Json = cats.cats[0].url;
+            CatRandomizer randy = new CatRandomizer();
+            randy.ChooseCandidates(cats);
+            ViewBag.first = cats.cats[randy.firstIndex].url;
+            ViewBag.sec = cats.cats[randy.secondIndex].url;
             return View();
         }
 
