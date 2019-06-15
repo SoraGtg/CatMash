@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace CatMash
+namespace CatMash // Project google id catmash-243723 
 {
     public class Program
     {

@@ -8,11 +8,16 @@ using System.Diagnostics;
 
 namespace CatMash.Controllers
 {
+    /*
+     * Class : StatisticsController
+     * Handles the statistical part of the website (asks model to compute votes and sort cats
+     * Author : Mokrane
+     */
     public class StatisticsController : Controller
     {
         public IActionResult Statistics()
         {
-            StatModel.computeCuteness();
+            StatModel.ComputeCuteness();
             ViewBag.totalVotes = SharedVariables.totalVotes;
             Cats.cats.Sort();
             ViewBag.cats = Cats.cats;

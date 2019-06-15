@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace CatMash.Models
 {
     /* Class : Cat
-     * This class is used by the JSON parser to store cat image urls and ids in a list of Cat elements, besides, score of votes is also stored
+     * This class is used by the JSON parser to store cat images' features
      * Author : Mokrane Gaci
      */
     public class Cat : IComparable<Cat>
@@ -16,6 +16,7 @@ namespace CatMash.Models
         public long votes { get; set; }
         public String cuteness { get; set; }
 
+        // Notice : CompareTo is implemented so that the cats are sorted in decreasing order according to the number of votes
         public int CompareTo(Cat other)
         {
             if (this.votes > other.votes) return -1;

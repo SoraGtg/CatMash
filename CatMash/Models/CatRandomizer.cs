@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-/* Class : CatRandomizer
- * Takes a list of cats and randomly chooses two candidates to be judged
- * Author : Mokrane Gaci
- */
 namespace CatMash.Models
 {
+    /*
+     * Class : CatRandomizer
+     * Provides methods and properties to randomly choose two cat images to be judged
+     * Author : Mokrane
+     */
     public class CatRandomizer
     {
         private static Random rng = new Random();

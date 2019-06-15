@@ -8,6 +8,11 @@ using CatMash.Models;
 
 namespace CatMash.Controllers
 {
+    /*
+     * Class : HomeController
+     * Handles the operations on the homepage of CatMash
+     * Author : automatically generated, Mokrane added a few methods
+     */
     public class HomeController : Controller
     {
 
@@ -35,7 +40,7 @@ namespace CatMash.Controllers
 
         public IActionResult Voted(int catIndex)
         {
-            Cats.addVote(catIndex);
+            Cats.AddVote(catIndex);
 
             CatRandomizer randy = new CatRandomizer();
             randy.ChooseCandidates();
